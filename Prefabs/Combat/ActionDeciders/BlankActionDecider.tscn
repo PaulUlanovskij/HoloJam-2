@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdrou5dh346j5"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/CharacterActionDeciders/CharacterActionDecider.cs" id="1_jvpqy"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_jvpqy")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqur1uw83g5i8"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/StatusEffects/BlockStatusEffect.cs" id="1_kryuw"]
+
+[node name="blockStatusEffect" type="Node"]
+script = ExtResource("1_kryuw")

@@ -1,0 +1,81 @@
+﻿using Godot;
+using System;
+
+public partial class CharacterPanel : Control
+{
+    [Export] private TextureRect _portrait;
+
+    [Export] private ProgressBar _HPBar;
+    [Export] private ProgressBar _SPBar;
+
+    [Export] private TextureRect _outOfAction;
+    [Export] private Node _statusEffectHolder;
+
+    public Character Character;
+
+    
+    public void SetCharacter(Character character)
+    {
+        if (character is null)
+            return;
+        
+        Character = character;
+
+        _portrait.Texture = Character.Portrait;
+
+
+        _HPBar.MaxValue = Character.MaxHP.Value;
+        _HPBar.Value = Character.HP.Value;
+
+        _SPBar.MaxValue = Character.MaxSP.Value;
+        _SPBar.Value = Character.SP.Value;
+
+
+        Character.HP.OnChangedValue += delegate { _HPBar.Value = Character.HP.Value; };
+        Character.MaxHP.OnChangedValue += delegate { _HPBar.MaxValue = Character.MaxHP.Value; };
+
+        Character.SP.OnChangedValue += delegate { _SPBar.Value = Character.SP.Value; };
+        Character.MaxSP.OnChangedValue += delegate { _SPBar.MaxValue = Character.MaxSP.Value; };
+
+
+        Character.BecameOutOfAction += OnBecameOutOfAction;
+        Character.StatusEffectAdded += OnStatusEffectAdded;
+    }
+
+    public void RemoveAllStatusEffects()
+    {
+        foreach (var item in _statusEffectHolder.GetChildren())
+        {
+            item.QueueFree();
+        }
+    }
+    private void OnStatusEffectAdded(PackedScene scene)
+    {
+        var status = scene.Instantiate() as StatusEffect;
+        _statusEffectHolder.AddChild(status);
+        status.Apply();
+    }
+
+    public void OnBecameOutOfAction(Character character)
+    {
+        _outOfAction.Show();
+        RemoveAllStatusEffects();
+    }
+    protected override void Dispose(bool disposing)
+    {
+        if (Character is not null)
+        {
+            Character.HP.OnChangedValue += delegate { _HPBar.Value = Character.HP.Value; };
+            Character.MaxHP.OnChangedValue += delegate { _HPBar.MaxValue = Character.MaxHP.Value; };
+
+            Character.SP.OnChangedValue += delegate { _SPBar.Value = Character.SP.Value; };
+            Character.MaxSP.OnChangedValue += delegate { _SPBar.MaxValue = Character.MaxSP.Value; };
+
+
+            Character.BecameOutOfAction += OnBecameOutOfAction;
+            Character.StatusEffectAdded += OnStatusEffectAdded;
+        }
+
+        base.Dispose(disposing);
+    }
+}

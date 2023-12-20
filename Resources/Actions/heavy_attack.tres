@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackAction" load_steps=2 format=3 uid="uid://c73tyf5xcw8ma"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Actions/AttackAction.cs" id="1_yluat"]
+
+[resource]
+script = ExtResource("1_yluat")
+Damage = 50
+DamageType = 0
+HPCost = 2
+SPCost = 0
+Name = "Bonk"
+Description = "Go to the horny jail"
+_foesStatusEffects = null
+_alliesStatusEffects = null

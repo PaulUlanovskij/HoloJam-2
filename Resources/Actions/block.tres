@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockAction" load_steps=3 format=3 uid="uid://d0n6glptl80le"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Actions/BlockAction.cs" id="1_b5n31"]
+[ext_resource type="PackedScene" uid="uid://cqur1uw83g5i8" path="res://Prefabs/Combat/StatusEffects/block_status_effect.tscn" id="1_t4j84"]
+
+[resource]
+script = ExtResource("1_b5n31")
+HPCost = 0
+SPCost = 0
+Name = "Block"
+Description = "Blocks some incoming Physical Damage"
+_foesStatusEffects = null
+_alliesStatusEffects = Array[PackedScene]([ExtResource("1_t4j84")])

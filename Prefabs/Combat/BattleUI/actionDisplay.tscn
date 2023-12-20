@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://pmolt72mxbcf"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/BattleUI/ActionDisplay.cs" id="1_jlh5m"]
+
+[node name="Action" type="MarginContainer" node_paths=PackedStringArray("_name", "_cost")]
+script = ExtResource("1_jlh5m")
+_name = NodePath("HBoxContainer/Name")
+_cost = NodePath("HBoxContainer/Cost")
+_spColor = Color(0, 0.627451, 0.933333, 1)
+_hpColor = Color(0.968627, 0.635294, 0.290196, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Cost" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://2yfjpy2nmw3n"]
+
+[ext_resource type="PackedScene" uid="uid://bhqge4lgfy6vk" path="res://Prefabs/Combat/BattleUI/BattlePanel.tscn" id="1_nkuum"]
+[ext_resource type="Script" path="res://Scripts/Combat/Other/EncounterInitiator.cs" id="2_8kkk2"]
+[ext_resource type="Resource" uid="uid://5qaxc2gap57q" path="res://Resources/Characters/sapling.tres" id="3_l7s5p"]
+[ext_resource type="Resource" uid="uid://w0ogmcce8nhi" path="res://Resources/Characters/fauna.tres" id="3_uppkk"]
+[ext_resource type="Resource" uid="uid://diaw8cbka54av" path="res://Resources/Characters/wolf.tres" id="5_2ju2p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Encounter Initiator" type="Node" parent="." node_paths=PackedStringArray("_battle")]
+script = ExtResource("2_8kkk2")
+_allies = Array[Object]([ExtResource("3_uppkk"), ExtResource("3_l7s5p")])
+_foes = Array[Object]([ExtResource("5_2ju2p"), ExtResource("3_l7s5p"), ExtResource("3_l7s5p"), ExtResource("3_l7s5p")])
+_battle = NodePath("../Node/Control")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Control" parent="Node" instance=ExtResource("1_nkuum")]
