@@ -11,14 +11,14 @@ public partial class ActionSelectionPanel : PanelContainer
 
     private List<CharacterAction> _actions = new List<CharacterAction>();
     private List<ActionDisplay> _actionPanels = new List<ActionDisplay>();
-    private BattlePanel _battlePanel;
+    private CombatPanel _battlePanel;
 
     [Export] Control _pickerMarker;
 
     [Export] private Color _unavailible;
     private int _actionIndex = 0;
 
-    public void StartSelection(Character character, BattlePanel battlePanelForCallback)
+    public void StartSelection(Character character, CombatPanel battlePanelForCallback)
     {
         foreach (var child in _actionsBox.GetChildren())
         {

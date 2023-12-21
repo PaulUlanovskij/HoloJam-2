@@ -8,10 +8,9 @@ public partial class HealAction : CharacterAction
     [Export] public int Heal = 2;
 
     public override bool TargetAllies => true;
-    protected override void PlayActionOverride(Character caster, List<Character> allies, List<Character> foes)
+    protected override void PlayActionOverride(CharacterPanel caster, List<CharacterPanel> allies, List<CharacterPanel> foes)
     {
-        allies.First().Heal(Heal);
+        allies.First().Character.Heal(Heal);
 
-        GD.Print($"{caster.Name} healed {allies.First().Name}.\n{Description}.\n");
     }
 }

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterSheet" load_steps=7 format=3 uid="uid://cpnss4l3r12mc"]
+
+[ext_resource type="PackedScene" uid="uid://cdrou5dh346j5" path="res://Prefabs/Combat/ActionDeciders/BlankActionDecider.tscn" id="1_5uvk5"]
+[ext_resource type="Resource" uid="uid://db8t6fkppwu2f" path="res://Resources/Actions/heal.tres" id="2_e5cj1"]
+[ext_resource type="Resource" uid="uid://c61j8u12vm4ny" path="res://Resources/Actions/attack.tres" id="4_kq416"]
+[ext_resource type="SpriteFrames" uid="uid://bv2yehqux006u" path="res://Art/Characters/SpriteFrames/flare_frames.tres" id="5_hn8c8"]
+[ext_resource type="Resource" uid="uid://d0n6glptl80le" path="res://Resources/Actions/block.tres" id="5_qjdbb"]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterSheet.cs" id="7_cfkk3"]
+
+[resource]
+script = ExtResource("7_cfkk3")
+Name = "Flare"
+MaxHP = 200
+MaxSP = 10
+Voice = 0
+Def = 0.15
+Res = 0.15
+Initiative = 7
+ActionDecider = ExtResource("1_5uvk5")
+Actions = Array[Object]([ExtResource("2_e5cj1"), ExtResource("4_kq416"), ExtResource("5_qjdbb")])
+SpriteFrames = ExtResource("5_hn8c8")

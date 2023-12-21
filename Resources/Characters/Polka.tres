@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterSheet" load_steps=7 format=3 uid="uid://ik8lxe8wlsly"]
+
+[ext_resource type="PackedScene" uid="uid://cdrou5dh346j5" path="res://Prefabs/Combat/ActionDeciders/BlankActionDecider.tscn" id="1_uoqdn"]
+[ext_resource type="Resource" uid="uid://bvd7koc7oi37a" path="res://Resources/Actions/Magical bolt.tres" id="4_deuvn"]
+[ext_resource type="Resource" uid="uid://c61j8u12vm4ny" path="res://Resources/Actions/attack.tres" id="4_yu20k"]
+[ext_resource type="Resource" uid="uid://d0n6glptl80le" path="res://Resources/Actions/block.tres" id="5_1tprk"]
+[ext_resource type="SpriteFrames" uid="uid://qkwrwll2p1yp" path="res://Art/Characters/SpriteFrames/polka_frames.tres" id="5_c1isk"]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterSheet.cs" id="7_ufhsq"]
+
+[resource]
+script = ExtResource("7_ufhsq")
+Name = "Polka"
+MaxHP = 100
+MaxSP = 10
+Voice = 0
+Def = 0.0
+Res = 0.0
+Initiative = 3
+ActionDecider = ExtResource("1_uoqdn")
+Actions = Array[Object]([ExtResource("4_yu20k"), ExtResource("5_1tprk"), ExtResource("4_deuvn")])
+SpriteFrames = ExtResource("5_c1isk")

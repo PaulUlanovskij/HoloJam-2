@@ -18,6 +18,7 @@ public partial class Character : IEquatable<Character>
         
         ActionDecider = characterSheet.ActionDecider;
         Actions = characterSheet.Actions;
+        SpriteFrames = characterSheet.SpriteFrames;
 
         HP.Value = MaxHP.Value = characterSheet.MaxHP;
         SP.Value = MaxSP.Value = characterSheet.MaxSP;
@@ -44,13 +45,12 @@ public partial class Character : IEquatable<Character>
     public PackedScene ActionDecider;
     public CharacterAction[] Actions;
 
-    public Action OnTurnStart;
-    public Action OnTurnEnd;
+    public SpriteFrames SpriteFrames;
 
-    public Action<PackedScene> StatusEffectAdded;
-    public Action<Character> BecameOutOfAction;
+    public Action<Character> OnDeath;
 
-    public bool IsOutOfAction;
+
+    public bool IsDead;
     
     public void TakeDamage(int amount, DamageType damageType)
     {
@@ -76,13 +76,9 @@ public partial class Character : IEquatable<Character>
     {
         if (HP.Value <= 0)
         {
-            IsOutOfAction = true;
-            BecameOutOfAction?.Invoke(this);
+            IsDead = true;
+            OnDeath?.Invoke(this);
         }
-    }
-    public void AddStatusEffect(PackedScene effect)
-    {
-        StatusEffectAdded?.Invoke(effect);
     }
     public bool CanPerformAction(CharacterAction action)
     {
@@ -110,8 +106,8 @@ public partial class Character : IEquatable<Character>
                EqualityComparer<Texture2D>.Default.Equals(Portrait, character.Portrait) &&
                EqualityComparer<PackedScene>.Default.Equals(ActionDecider, character.ActionDecider) &&
                EqualityComparer<CharacterAction[]>.Default.Equals(Actions, character.Actions) &&
-               EqualityComparer<Action<Character>>.Default.Equals(BecameOutOfAction, character.BecameOutOfAction) &&
-               IsOutOfAction == character.IsOutOfAction;
+               EqualityComparer<Action<Character>>.Default.Equals(OnDeath, character.OnDeath) &&
+               IsDead == character.IsDead;
     }
 
     public override int GetHashCode()
@@ -129,8 +125,8 @@ public partial class Character : IEquatable<Character>
         hash.Add(Portrait);
         hash.Add(ActionDecider);
         hash.Add(Actions);
-        hash.Add(BecameOutOfAction);
-        hash.Add(IsOutOfAction);
+        hash.Add(OnDeath);
+        hash.Add(IsDead);
         return hash.ToHashCode();
     }
 

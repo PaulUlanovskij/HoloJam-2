@@ -7,10 +7,9 @@ public partial class AttackAction : CharacterAction
 {
     [Export] public int Damage = 2;
     [Export] public DamageType DamageType;
-    protected override void PlayActionOverride(Character caster, List<Character> allies, List<Character> foes)
+    protected override void PlayActionOverride(CharacterPanel caster, List<CharacterPanel> allies, List<CharacterPanel> foes)
     {
-        foes.First().TakeDamage(Damage, DamageType);
+        foes.First().Character.TakeDamage(Damage, DamageType);
 
-        GD.Print($"{caster.Name} attacked {foes.First().Name}.\n{Description}.\n");
     }
 }

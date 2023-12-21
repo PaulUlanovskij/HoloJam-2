@@ -1,18 +1,17 @@
 ﻿using Godot;
 using System.Collections.Generic;
-using System.Linq;
 
 public partial class TargetSelectionPanel : Control
 {
-    [Export] NinePatchRect _marker;
+    [Export] TextureRect _marker;
 
     private List<CharacterPanel> _targets = new();
-    private BattlePanel _battlePanel;
+    private CombatPanel _battlePanel;
 
     private bool _isTargeting;
     private int _index = 0;
 
-    public void StartTargeting(CharacterAction action, List<CharacterPanel> allies, List<CharacterPanel> foes, BattlePanel battlePanelForCallback)
+    public void StartTargeting(CharacterAction action, List<CharacterPanel> allies, List<CharacterPanel> foes, CombatPanel battlePanelForCallback)
     {
         _targets = action.TargetAllies is true ? allies : foes;
         _battlePanel = battlePanelForCallback;
@@ -29,13 +28,16 @@ public partial class TargetSelectionPanel : Control
 
         if (Input.IsActionJustPressed("ui_accept"))
         {
-            _battlePanel.SetPlayerTarget(_targets[_index].Character);
+            int returnValue = _index;
 
-            _marker.Hide();
             _index = 0;
             _isTargeting = false;
+            _marker.Hide();
+
+            _battlePanel.SetPlayerTarget(_targets[returnValue]);
+
         }
-        else if (Input.IsActionJustPressed("ui_left") is true)
+        else if (Input.IsActionJustPressed("ui_down") is true)
         {
             _index--;
 
@@ -46,7 +48,7 @@ public partial class TargetSelectionPanel : Control
             PositionOnTarget();
 
         }
-        else if (Input.IsActionJustPressed("ui_right") is true)
+        else if (Input.IsActionJustPressed("ui_up") is true)
         {
             _index++;
 

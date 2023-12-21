@@ -4,14 +4,13 @@ using System.Linq;
 
 public partial class CharacterActionDecider : Node
 {
-    public virtual void PickFromList(Character caster, List<Character> allies, List<Character> foes)
+    public virtual CharacterAction PickFromList(CharacterPanel caster, List<CharacterPanel> allies, List<CharacterPanel> foes)
     {
-        if (caster.Actions is not null && caster.Actions.Any())
+        if (caster.Character.Actions is not null && caster.Character.Actions.Any())
         {
-            caster.Actions[0].Play(caster, allies, foes);
-            return;
+            return caster.Character.Actions[0];
         }
 
-        new CharacterAction().Play(caster, allies, foes);
+        return new CharacterAction();
     }
 }

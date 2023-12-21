@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba6vw8ugkfmm6"
-path="res://.godot/imported/portraitAnuafSmile.png-0f7281937c402154da238881d423695a.ctex"
+uid="uid://bbwvu1ehfm07w"
+path="res://.godot/imported/Noel_Moves.png-1ded33a709c87be0a8bc3d5d58ee75ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/portraitAnuafSmile.png"
-dest_files=["res://.godot/imported/portraitAnuafSmile.png-0f7281937c402154da238881d423695a.ctex"]
+source_file="res://Art/Characters/Noel_Moves.png"
+dest_files=["res://.godot/imported/Noel_Moves.png-1ded33a709c87be0a8bc3d5d58ee75ae.ctex"]
 
 [params]
 

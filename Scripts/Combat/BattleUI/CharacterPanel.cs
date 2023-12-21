@@ -3,16 +3,18 @@ using System;
 
 public partial class CharacterPanel : Control
 {
-    [Export] private TextureRect _portrait;
+    [Export] public AnimatedSprite2D AnimatedSprite;
 
     [Export] private ProgressBar _HPBar;
     [Export] private ProgressBar _SPBar;
 
-    [Export] private TextureRect _outOfAction;
     [Export] private Node _statusEffectHolder;
 
-    public Character Character;
+    public Action OnStartOfTurn;
+    public Action OnEndOfTurn;
 
+    public Character Character;
+    public CharacterActionDecider ActionDecider => this.GetChildByType<CharacterActionDecider>();
     
     public void SetCharacter(Character character)
     {
@@ -21,8 +23,8 @@ public partial class CharacterPanel : Control
         
         Character = character;
 
-        _portrait.Texture = Character.Portrait;
-
+        AnimatedSprite.Stop();
+        AnimatedSprite.SpriteFrames = Character.SpriteFrames;
 
         _HPBar.MaxValue = Character.MaxHP.Value;
         _HPBar.Value = Character.HP.Value;
@@ -38,10 +40,18 @@ public partial class CharacterPanel : Control
         Character.MaxSP.OnChangedValue += delegate { _SPBar.MaxValue = Character.MaxSP.Value; };
 
 
-        Character.BecameOutOfAction += OnBecameOutOfAction;
-        Character.StatusEffectAdded += OnStatusEffectAdded;
+        Character.OnDeath += OnDeath;
     }
-
+    public void PlayAnimation(AnimationType type)
+    {
+        GD.Print(type);
+        AnimatedSprite.Play(type.ToString());
+    }
+    public override void _Process(double delta)
+    {
+        if (AnimatedSprite.IsPlaying() is false && AnimatedSprite.SpriteFrames is not null)
+            PlayAnimation(AnimationType.idle);
+    }
     public void RemoveAllStatusEffects()
     {
         foreach (var item in _statusEffectHolder.GetChildren())
@@ -49,16 +59,16 @@ public partial class CharacterPanel : Control
             item.QueueFree();
         }
     }
-    private void OnStatusEffectAdded(PackedScene scene)
+    public void AddStatusEffect(PackedScene scene)
     {
         var status = scene.Instantiate() as StatusEffect;
         _statusEffectHolder.AddChild(status);
         status.Apply();
     }
 
-    public void OnBecameOutOfAction(Character character)
+    public void OnDeath(Character character)
     {
-        _outOfAction.Show();
+        AnimatedSprite.Play("death");
         RemoveAllStatusEffects();
     }
     protected override void Dispose(bool disposing)
@@ -72,8 +82,7 @@ public partial class CharacterPanel : Control
             Character.MaxSP.OnChangedValue += delegate { _SPBar.MaxValue = Character.MaxSP.Value; };
 
 
-            Character.BecameOutOfAction += OnBecameOutOfAction;
-            Character.StatusEffectAdded += OnStatusEffectAdded;
+            Character.OnDeath += OnDeath;
         }
 
         base.Dispose(disposing);

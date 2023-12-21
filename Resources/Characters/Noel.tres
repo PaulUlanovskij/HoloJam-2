@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterSheet" load_steps=7 format=3 uid="uid://w0ogmcce8nhi"]
+
+[ext_resource type="PackedScene" uid="uid://cdrou5dh346j5" path="res://Prefabs/Combat/ActionDeciders/BlankActionDecider.tscn" id="1_3qur0"]
+[ext_resource type="Resource" uid="uid://c73tyf5xcw8ma" path="res://Resources/Actions/heavy_attack.tres" id="2_iphe4"]
+[ext_resource type="Resource" uid="uid://c61j8u12vm4ny" path="res://Resources/Actions/attack.tres" id="4_8q2a7"]
+[ext_resource type="Resource" uid="uid://d0n6glptl80le" path="res://Resources/Actions/block.tres" id="5_ehwbk"]
+[ext_resource type="SpriteFrames" uid="uid://dlli0fqgpvvwd" path="res://Art/Characters/SpriteFrames/noel_frames.tres" id="5_obugl"]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterSheet.cs" id="7_yceme"]
+
+[resource]
+script = ExtResource("7_yceme")
+Name = "Noel"
+MaxHP = 200
+MaxSP = 10
+Voice = 0
+Def = 0.4
+Res = 0.25
+Initiative = 5
+ActionDecider = ExtResource("1_3qur0")
+Actions = Array[Object]([ExtResource("5_ehwbk"), ExtResource("2_iphe4"), ExtResource("4_8q2a7")])
+SpriteFrames = ExtResource("5_obugl")

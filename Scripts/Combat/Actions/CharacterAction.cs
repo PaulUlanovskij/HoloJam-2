@@ -19,40 +19,35 @@ public partial class CharacterAction : Resource
 
     public virtual bool IsUntargetable { get; } = false;
     public virtual bool TargetAllies { get; } = false;
+    [Export] public AnimationType AnimationType; 
 
-    public void Play(Character caster, List<Character> allies = null, List<Character> foes = null)
+    public void Play(CharacterPanel caster, List<CharacterPanel> allies = null, List<CharacterPanel> foes = null)
     {
         if (CostsHP is true) 
         {
-            caster.HP.Value -= Cost;
+            caster.Character.HP.Value -= Cost;
         }
         else
         {
-            caster.SP.Value -= Cost;
+            caster.Character.SP.Value -= Cost;
         }
         PlayActionOverride(caster, allies, foes);
-        AddStatusEffectsOverride(caster, allies, foes);
     }
-    protected virtual void PlayActionOverride(Character caster, List<Character> allies, List<Character> foes)
-    {
-        GD.Print($"{caster.Name} played {Name}.\n{Description}.\n");
-    }
-    protected virtual void AddStatusEffectsOverride(Character caster, List<Character> affectedAllies, List<Character> affectedFoes)
+    protected virtual void PlayActionOverride(CharacterPanel caster, List<CharacterPanel> allies, List<CharacterPanel> foes)
     {
         if (_alliesStatusEffects is not null && _alliesStatusEffects.Any() is true)
         {
-            foreach (Character character in affectedAllies)
+            foreach (var panel in allies)
             {
-                character.AddStatusEffect(_alliesStatusEffects[0]);
+                panel.AddStatusEffect(_alliesStatusEffects[0]);
             }
         }
         if (_foesStatusEffects is not null && _foesStatusEffects.Any() is true)
         {
-            foreach (Character character in affectedFoes)
+            foreach (var panel in foes)
             {
-                character.AddStatusEffect(_foesStatusEffects[0]);
+                panel.AddStatusEffect(_alliesStatusEffects[0]);
             }
-
         }
     }
 }

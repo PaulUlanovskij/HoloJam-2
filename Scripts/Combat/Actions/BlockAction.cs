@@ -5,12 +5,9 @@ using System.Collections.Generic;
 public partial class BlockAction : CharacterAction
 {
     public override bool IsUntargetable => true;
-    protected override void PlayActionOverride(Character caster, List<Character> allies, List<Character> enemies)
-    {
-        GD.Print($"{caster.Name} blocks \n{Description}.\n");
-    }
-    protected override void AddStatusEffectsOverride(Character caster, List<Character> affectedAllies, List<Character> affectedFoes)
+    protected override void PlayActionOverride(CharacterPanel caster, List<CharacterPanel> allies, List<CharacterPanel> enemies)
     {
         caster.AddStatusEffect(_alliesStatusEffects[0]);
+
     }
 }

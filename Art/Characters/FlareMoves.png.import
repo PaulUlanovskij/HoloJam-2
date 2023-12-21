@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chl8bjdej4e68"
-path="res://.godot/imported/sapling.png-f4d273acc88a0d67ddad979462523edc.ctex"
+uid="uid://brfi6t4agpmrv"
+path="res://.godot/imported/FlareMoves.png-254b51699df7e3a195ebdf6f19edf252.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Enemies/sapling.png"
-dest_files=["res://.godot/imported/sapling.png-f4d273acc88a0d67ddad979462523edc.ctex"]
+source_file="res://Art/Characters/FlareMoves.png"
+dest_files=["res://.godot/imported/FlareMoves.png-254b51699df7e3a195ebdf6f19edf252.ctex"]
 
 [params]
 

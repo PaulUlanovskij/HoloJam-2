@@ -11,3 +11,4 @@ Name = "Heal"
 Description = "Heals health"
 _foesStatusEffects = null
 _alliesStatusEffects = null
+AnimationType = 3

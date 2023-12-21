@@ -11,3 +11,4 @@ Name = "Block"
 Description = "Blocks some incoming Physical Damage"
 _foesStatusEffects = null
 _alliesStatusEffects = Array[PackedScene]([ExtResource("1_t4j84")])
+AnimationType = 2

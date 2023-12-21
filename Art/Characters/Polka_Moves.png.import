@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk1h6kg4kpykf"
-path="res://.godot/imported/wolf.png-25e2a7500ac600e3a442200669d95ce7.ctex"
+uid="uid://c2d6q6a08ka7t"
+path="res://.godot/imported/Polka_Moves.png-286fb8d216ca6fddbea86a5b6b947362.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Enemies/wolf.png"
-dest_files=["res://.godot/imported/wolf.png-25e2a7500ac600e3a442200669d95ce7.ctex"]
+source_file="res://Art/Characters/Polka_Moves.png"
+dest_files=["res://.godot/imported/Polka_Moves.png-286fb8d216ca6fddbea86a5b6b947362.ctex"]
 
 [params]
 

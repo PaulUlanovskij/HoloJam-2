@@ -12,3 +12,4 @@ Name = "Attack"
 Description = "Deals Physical Damage"
 _foesStatusEffects = null
 _alliesStatusEffects = null
+AnimationType = 1

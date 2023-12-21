@@ -1,29 +1,29 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhqge4lgfy6vk"]
 
-[ext_resource type="Script" path="res://Scripts/Combat/BattleUI/BattlePanel.cs" id="1_aogg5"]
+[ext_resource type="Script" path="res://Scripts/Combat/BattleUI/CombatPanel.cs" id="1_tj7no"]
 [ext_resource type="Texture2D" uid="uid://caytsjko3wfy3" path="res://Art/BGs/Grassland.png" id="2_dpagb"]
 [ext_resource type="Script" path="res://Scripts/Combat/BattleUI/TargetSelectionPanel.cs" id="3_d0rn8"]
 [ext_resource type="PackedScene" uid="uid://bii2d1s8yhgdg" path="res://Prefabs/Combat/BattleUI/character_panel.tscn" id="3_ek8iw"]
+[ext_resource type="Texture2D" uid="uid://c7683mje3qu3y" path="res://Art/Other/target.png" id="5_dvypc"]
 [ext_resource type="Script" path="res://Scripts/Combat/Other/TurnQueue.cs" id="7_ce4qy"]
-[ext_resource type="Texture2D" uid="uid://bhjnnlwqfjw3s" path="res://Art/Other/target1.png" id="8_uac2j"]
 [ext_resource type="PackedScene" uid="uid://ui0a1cicpyjn" path="res://Prefabs/Combat/BattleUI/action_selection_panel.tscn" id="9_ougb2"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("_foesPlacement", "_alliesPlacement", "_actionSelectionPanel", "_targetSelectionPanel", "_turnQueue")]
+[node name="Control" type="Control" node_paths=PackedStringArray("_foesPlacement", "_alliesPlacement", "_turnQueue", "_actionSelectionPanel", "_targetSelectionPanel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_aogg5")
+script = ExtResource("1_tj7no")
 _blankCharacterPanel = ExtResource("3_ek8iw")
-_foesPlacement = NodePath("VBoxContainer/EnemyTeam")
-_alliesPlacement = NodePath("VBoxContainer/PlayerTeam")
-_actionSelectionPanel = NodePath("ActionSelectScreen")
-_targetSelectionPanel = NodePath("VBoxContainer")
+_foesPlacement = NodePath("TargetSelectionPanel/Foes Placement")
+_alliesPlacement = NodePath("TargetSelectionPanel/Allies Placement")
 _turnQueue = NodePath("TurnQueue")
+_actionSelectionPanel = NodePath("ActionSelectScreen")
+_targetSelectionPanel = NodePath("TargetSelectionPanel")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,34 +32,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_dpagb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("_marker")]
+[node name="TargetSelectionPanel" type="HBoxContainer" parent="." node_paths=PackedStringArray("_marker")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 800
 alignment = 1
 script = ExtResource("3_d0rn8")
-_marker = NodePath("../TargetMarker")
+_marker = NodePath("../Target")
 
-[node name="EnemyTeam" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Foes Placement" type="VBoxContainer" parent="TargetSelectionPanel"]
 layout_mode = 2
 alignment = 1
 
-[node name="PlayerTeam" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Allies Placement" type="VBoxContainer" parent="TargetSelectionPanel"]
 layout_mode = 2
 alignment = 1
 
-[node name="TargetMarker" type="NinePatchRect" parent="."]
+[node name="Target" type="TextureRect" parent="."]
 visible = false
-texture_filter = 1
-layout_mode = 0
-offset_right = 160.0
-offset_bottom = 160.0
-texture = ExtResource("8_uac2j")
-region_rect = Rect2(0, 0, 128, 128)
+layout_mode = 2
+offset_left = 8.0
+offset_right = 136.0
+offset_bottom = 128.0
+texture = ExtResource("5_dvypc")
 
 [node name="ActionSelectScreen" parent="." instance=ExtResource("9_ougb2")]
 visible = false

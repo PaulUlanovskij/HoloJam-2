@@ -8,12 +8,12 @@ public partial class EncounterInitiator : Node
     [Export] CharacterSheet[] _allies;
     [Export] CharacterSheet[] _foes;
 
-    [Export] BattlePanel _battle;
+    [Export] CombatPanel _battle;
     public override void _Ready()
     {
-        _battle.InitiateBattle(_foes.Select(x => new Character(x)).ToArray(), _allies.Select(x => new Character(x)).ToArray()) ;
-        _battle.BattleEnded += Success;
-        _battle.BattleLost += Failure;
+        _battle.StartCombat(_foes.Select(x => new Character(x)).ToArray(), _allies.Select(x => new Character(x)).ToArray()) ;
+        _battle.CombatEnded += Success;
+        _battle.CombatLost += Failure;
     }
 
     private void Failure()

@@ -14,4 +14,5 @@ public partial class CharacterSheet : Resource
     [Export] public Texture2D Portrait { get; set; }
     [Export] public PackedScene ActionDecider { get; set; }
     [Export] public CharacterAction[] Actions { get; set; }
+    [Export] public SpriteFrames SpriteFrames { get; set; }
 }

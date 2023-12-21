@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterSheet" load_steps=7 format=3 uid="uid://cwrvfwsy8dx1g"]
+
+[ext_resource type="PackedScene" uid="uid://cdrou5dh346j5" path="res://Prefabs/Combat/ActionDeciders/BlankActionDecider.tscn" id="1_dxy71"]
+[ext_resource type="Resource" uid="uid://c73tyf5xcw8ma" path="res://Resources/Actions/heavy_attack.tres" id="3_j5ycb"]
+[ext_resource type="Resource" uid="uid://c61j8u12vm4ny" path="res://Resources/Actions/attack.tres" id="4_i81w3"]
+[ext_resource type="SpriteFrames" uid="uid://bm7cqbprg7b67" path="res://Art/Characters/SpriteFrames/susei_frames.tres" id="5_bq3nh"]
+[ext_resource type="Resource" uid="uid://d0n6glptl80le" path="res://Resources/Actions/block.tres" id="5_f613t"]
+[ext_resource type="Script" path="res://Scripts/Character/CharacterSheet.cs" id="7_pajxt"]
+
+[resource]
+script = ExtResource("7_pajxt")
+Name = "Suisei"
+MaxHP = 150
+MaxSP = 10
+Voice = 0
+Def = 0.0
+Res = 0.0
+Initiative = 10
+ActionDecider = ExtResource("1_dxy71")
+Actions = Array[Object]([ExtResource("3_j5ycb"), ExtResource("4_i81w3"), ExtResource("5_f613t")])
+SpriteFrames = ExtResource("5_bq3nh")

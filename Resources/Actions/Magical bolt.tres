@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackAction" load_steps=2 format=3 uid="uid://bvd7koc7oi37a"]
+
+[ext_resource type="Script" path="res://Scripts/Combat/Actions/AttackAction.cs" id="1_6kqy5"]
+
+[resource]
+script = ExtResource("1_6kqy5")
+Damage = 100
+DamageType = 1
+HPCost = 0
+SPCost = 2
+Name = ""
+Description = ""
+_foesStatusEffects = null
+_alliesStatusEffects = null
+AnimationType = 3

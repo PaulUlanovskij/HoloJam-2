@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbq3mk85465ok"
-path="res://.godot/imported/portraitbaeSmile.png-bccdf94920476a0f7938e1beeb4b8f96.ctex"
+uid="uid://blk4qfxowltrv"
+path="res://.godot/imported/Suisei_Moves.png-a86de6cd2e829d5a4da53ee4e41cd02c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Characters/portraitbaeSmile.png"
-dest_files=["res://.godot/imported/portraitbaeSmile.png-bccdf94920476a0f7938e1beeb4b8f96.ctex"]
+source_file="res://Art/Characters/Suisei_Moves.png"
+dest_files=["res://.godot/imported/Suisei_Moves.png-a86de6cd2e829d5a4da53ee4e41cd02c.ctex"]
 
 [params]
 
